@@ -1,17 +1,16 @@
-const jwt=require('jsonwebtoken');
+const jwt=require('jsonwebtoken')
 const authMiddelware=(req,res,next)=>{
-  const token=req.header['x-access-token']||req.query.token
+const token=req.header['x-access-token']||req.query.token
   if(!token){
     return res.status(403).json({
       success:false,
       message:'Not logged in'
     })
   }
-  cnost p =new Promise((resolve,reject)=>{
+  const p =new Promise((resolve,reject)=>{
     jwt.verify(token,req.app.get('jwt-secret'),(err,decoded)=>{
-      if(err){reject(err)
+      if(err)reject(err)
         resolve(decoded)
-      }
     })
   })
   const onError=(error)=>{
