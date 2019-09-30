@@ -83,11 +83,13 @@ exports.deleteBlock=(req,res)=>{
   console.log(user);
   const Txidtokenize=crypto.createHmac('sha256',config.secret).update(user).digest('base64').replace('/','').replace('=','');
   console.log(Txidtokenize);
-  txetxid.findOneAndDelete({txid:Txidtokenize},(err,res)=>{
-    if(err){
-      return res.json({
-        error:err
-      })
-    }
+  txetxid.deleteOne({txid:Txidtokenize}).then(()=>{
+    res.status(200).json({
+      message:'delete'
+    });
+  }).catch((err)=>{
+    res.status(400).json({
+      error:err
+    });
   })
 }
