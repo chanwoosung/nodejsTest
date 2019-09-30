@@ -1,12 +1,10 @@
 const mongoose=require('mongoose');
- const Schema=mongoose.Schema;
+const Schema=mongoose.Schema;
 const test=new Schema({
-  title:String,author:String
+  title:'String',author:'String'
+},{
+  collection:'test'
 });
 
-module.exports=mongoose.model('test',test);
-
-// module.exports.Schema=function(modelName){
-//   console.log(Address);
-//   return{model:mongoose.model(modelName)};
-// }
+ const TestMOdel=mongoose.model('test',test);
+module.exports=TestMOdel;

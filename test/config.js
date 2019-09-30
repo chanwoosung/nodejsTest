@@ -1,4 +1,4 @@
 module.exports={
-    'mongoDBUrl':'mongodb://localhost/test2',
-    'secret':'TeSt'
+    'mongoDBUrl':'mongodb://localhost:27017/explorerdb',
+    'secret':'SeCrEtHaSh'
 }

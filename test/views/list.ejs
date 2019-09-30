@@ -2,13 +2,12 @@
 <html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title><%=title %></title>
   </head>
   <body>
-      <% for(var i=0;i<list.length;i++){ %> 
-         <ul>
-       <li><%=JSON.stringify(list[i])%></li> 
-    </ul>
-     <%}%>
+     <% lists.forEach(function(testTxid){%>
+      <li><%=testTxid.txid%></li>
+      <li><%=testTxid.blockhash%></li>
+     <%}); %>
   </body>
 </html>
