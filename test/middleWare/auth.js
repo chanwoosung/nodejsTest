@@ -1,4 +1,4 @@
-const jwt=require('jsonwebtoken')
+const jwt=require('jsonwebtoken');
 const authMiddelware=(req,res,next)=>{
 const token=req.header['x-access-token']||req.query.token
   if(!token){
@@ -10,7 +10,7 @@ const token=req.header['x-access-token']||req.query.token
   const p =new Promise((resolve,reject)=>{
     jwt.verify(token,req.app.get('jwt-secret'),(err,decoded)=>{
       if(err)reject(err)
-        resolve(decoded)
+        resolve(decoded);
     })
   })
   const onError=(error)=>{
@@ -21,7 +21,7 @@ const token=req.header['x-access-token']||req.query.token
   }
   p.then((decoded)=>{
     req.decoded=decoded
-    next()
-  }).catch(onError)
+    next();
+  }).catch(onError);
 }
-module.exports=authMiddelware
+module.exports=authMiddelware;

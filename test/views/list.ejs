@@ -5,7 +5,7 @@
     <title><%=title %></title>
   </head>
   <body>
-     <% lists.forEach(function(testTxid){%>
+     <% lists.forEach((testTxid)=>{%>
       <li><%=testTxid.txid%></li>
       <li><%=testTxid.blockhash%></li>
      <%}); %>

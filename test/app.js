@@ -4,14 +4,16 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose=require('mongoose');
 const route=require('./route');
-var port=process.env.PORT||7080;
-var config=require('./config')
+let port=process.env.PORT||7080;
+let config=require('./config');
+let sequelize=require('./models').sequelize;
+
 mongoose.Promise=global.Promise;
 
 
-var db= mongoose.connection;
+let db= mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDB connection error'));
-db.once('open',function callback(){
+db.once('open',()=>{
   console.log("connecting mongod SERVER");
 })
 app.set('views',__dirname+'/views');
@@ -23,6 +25,6 @@ app.use(morgan('dev'));
 app.use(express.static("public"));
 app.set('jwt-secret',config.secret);
 app.use('/test',route);
-mongoose.connect(config.mongoDBUrl).then(() => app.listen(port,function(){
+mongoose.connect(config.mongoDBUrl).then(() => app.listen(port,()=>{
   console.log("Express is running on Port "+port);
 }));

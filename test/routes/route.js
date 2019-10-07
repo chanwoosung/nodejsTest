@@ -1,18 +1,14 @@
 const mongoose=require('mongoose');
 const express=require('express');
 const router=require("express").Router();
-const DBModel=require('./models/addresses');
-const controller=require('./routes/controller');
-const middleware=require('./middleWare/auth');
-// router.get('/all',(req,res)=>{
-
-// });
+const DBModel=require('../models/addresses');
+const controller=require('./controller');
+const middleware=require('../middleWare/auth');
 
 router.get('/test',(req,res)=>{
 
-    res.send('hello')
+    res.send('hello');
 })
-//router.get('/',middleware);
 router.get('/search',controller.list);
 router.get('/api/:id',controller.show);
 router.get('/find/:id',controller.find);
@@ -24,7 +20,7 @@ router.post('/',(req,res,next)=>{
         title:"Main Page",
         introduce:"Welcome"
     })
-    next()
+    next();
 });
 
 
